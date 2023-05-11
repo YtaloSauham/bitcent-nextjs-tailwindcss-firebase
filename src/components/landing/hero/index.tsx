@@ -1,5 +1,9 @@
+import Layout from "../layout";
+
 export default function Hero(){
     return (
-        <div>Hero</div>
+        <Layout>
+            HERO
+        </Layout>
     )
 }
