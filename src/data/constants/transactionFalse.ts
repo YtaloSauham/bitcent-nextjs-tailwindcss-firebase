@@ -1,5 +1,6 @@
 import { TypeTransaction } from "@/logic/core/finances/TypeTransaction";
 import Transaction from "@/logic/core/finances/Transaction";
+import Id from "../../logic/core/shared/Id";
 
 const transactionFalse: Transaction[] = [
     {
@@ -54,4 +55,4 @@ const transactionFalse: Transaction[] = [
     },
 ]
 
-export default transacoesFalsas
+export default transactionFalse
