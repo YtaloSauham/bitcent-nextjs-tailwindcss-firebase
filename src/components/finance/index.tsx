@@ -5,6 +5,7 @@ import Page from "../template/Page";
 import Transaction from "@/logic/core/finances/Transaction";
 import transactionFalse from "@/data/constants/transactionFalse";
 import List from "./List";
+import Summary from "./Summary";
 
 export default function Finance() {
 
@@ -14,6 +15,7 @@ export default function Finance() {
         <Page>
             <Header />
             <Content>
+                <Summary transaction={transaction} />
                 <List transaction={transaction} />
             </Content>
 
