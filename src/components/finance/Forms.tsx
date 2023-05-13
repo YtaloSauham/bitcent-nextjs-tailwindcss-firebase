@@ -16,6 +16,7 @@ interface FormsProps {
 export default function Forms(props: FormsProps) {
     const [transaction, setTransaction] = useState<Transaction>(props.transaction)
     console.log(transaction)
+
     return (
         <div className={`
             flex flex-col border border-zinc-700
