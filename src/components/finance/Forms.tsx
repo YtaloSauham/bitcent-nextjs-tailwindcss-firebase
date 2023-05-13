@@ -14,7 +14,8 @@ interface FormsProps {
 }
 
 export default function Forms(props: FormsProps) {
-    const [Transaction, setTransaction] = useState<Transaction>(props.transaction)
+    const [transaction, setTransaction] = useState<Transaction>(props.transaction)
+    console.log(transaction)
     return (
         <div className={`
             flex flex-col border border-zinc-700
@@ -26,10 +27,10 @@ export default function Forms(props: FormsProps) {
                     type="text"
                     placeholder="Description"
                     className="input"
-                    value={Transaction.description ?? ''}
+                    value={transaction.description ?? ''}
                     onChange={e => {
                         setTransaction({
-                            ...Transaction,
+                            ...transaction,
                             description: e.target.value
                         })
                     }}
@@ -38,10 +39,10 @@ export default function Forms(props: FormsProps) {
                     type="number"
                     placeholder="Value"
                     className="input"
-                    value={Transaction.value ?? 0}
+                    value={transaction.value ?? 0}
                     onChange={e => {
                         setTransaction({
-                            ...Transaction,
+                            ...transaction,
                             value: +e.target.value
                         })
                     }}
@@ -50,10 +51,10 @@ export default function Forms(props: FormsProps) {
                     type="date"
                     placeholder="Date"
                     className="input"
-                    value={DateFormater.yymmdd.formate(Transaction.date ?? new Date())}
+                    value={DateFormater.yymmdd.formate(transaction.date ?? new Date())}
                     onChange={e => {
                         setTransaction({
-                            ...Transaction,
+                            ...transaction,
                             date: new Date(`${e.target.value} `)
                         })
                     }}
@@ -64,10 +65,10 @@ export default function Forms(props: FormsProps) {
                             type="radio"
                             name="Type"
                             value="receita"
-                            checked={Transaction.type === 'receita'}
+                            checked={transaction.type === 'receita'}
                             onChange={() => {
                                 setTransaction({
-                                    ...Transaction,
+                                    ...transaction,
                                     type: TypeTransaction.RECEITA
                                 })
                             }}
@@ -79,10 +80,10 @@ export default function Forms(props: FormsProps) {
                             type="radio"
                             name="type"
                             value="despesa"
-                            checked={Transaction.type === 'despesa'}
+                            checked={transaction.type === 'despesa'}
                             onChange={() => {
                                 setTransaction({
-                                    ...Transaction,
+                                    ...transaction,
                                     type: TypeTransaction.DESPESA
                                 })
                             }}
@@ -92,17 +93,19 @@ export default function Forms(props: FormsProps) {
                 </div>
             </div>
             <div className="flex px-4 sm:px-7 py-4 gap-3 bg-zinc-800">
-                <button className="btn bg-green-500" onClick={() => props.save?.(Transaction)}>
+                <button className="btn flex py-4 px-4 
+                items-center bg-green-500
+                rounded-md " onClick={() => props.save?.(transaction)}>
                     <IconCheck />
                     <span className="hidden sm:inline">Salvar</span>
                 </button>
-                <button className="btn bg-zinc-500" onClick={() => props.cancel?.()}>
+                <button className="btn  flex  py-4 px-4  rounded-md items-center bg-zinc-500" onClick={() => props.cancel?.()}>
                     <IconX />
                     <span className="hidden sm:inline">Cancelar</span>
                 </button>
                 <span className="flex-1"></span>
                 {props.transaction.id && (
-                    <button className="btn bg-red-500" onClick={() => props.remove?.(Transaction)}>
+                    <button className="btn py-4 px-4 rounded-md flex items-center bg-red-500" onClick={() => props.remove?.(transaction)}>
                         <IconTrash />
                         <span className="hidden sm:inline">Excluir</span>
                     </button>

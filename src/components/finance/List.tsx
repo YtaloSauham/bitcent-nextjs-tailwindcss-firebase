@@ -5,11 +5,13 @@ import { IconTrendingDown, IconTrendingUp } from "@tabler/icons-react";
 
 interface ListProps {
     transaction: Transaction[]
+    selectedTransaction?: (transaction: Transaction) => void
 }
 
 
 
 export default function List(props: ListProps) {
+
 
     function renderType(transaction: Transaction) {
         return (
@@ -32,7 +34,9 @@ export default function List(props: ListProps) {
         return (
             <div key={transaction.id} className={`
             flex items-center gap-3 p-3 cursor-pointer
-            ${index % 2 === 0 ? 'bg-zinc-900' : 'bg-zinc-800'}`}>
+            ${index % 2 === 0 ? 'bg-zinc-900' : 'bg-zinc-800'}`}
+                onClick={() => props.selectedTransaction?.(transaction)}>
+
 
                 {renderType(transaction)}
                 <span className="w-1/2">{transaction.description}</span>

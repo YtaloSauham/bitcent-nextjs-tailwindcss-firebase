@@ -10,15 +10,24 @@ import Forms from "./Forms";
 
 export default function Finance() {
 
-    const [transaction, setTransaction] = useState<Transaction[]>(transactionFalse)
+    const [transactions, setTransactions] = useState<Transaction[]>(transactionFalse)
+    const [transaction, setTransaction] = useState<Transaction | null>(null)
 
     return (
         <Page>
             <Header />
             <Content>
-                <Summary transaction={transaction} />
-                <List transaction={transaction} />
-                <Forms transaction={transaction[0]} />
+                <Summary transaction={transactions} />
+
+                {transaction ? (
+                    <Forms transaction={transaction}
+                        cancel={() => setTransaction(null)} />
+                ) : (
+                    <List transaction={transactions}
+                        selectedTransaction={setTransaction} />
+
+                )}
+
             </Content>
 
         </Page>
