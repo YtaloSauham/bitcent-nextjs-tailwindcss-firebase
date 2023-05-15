@@ -7,9 +7,9 @@ import Hero from "./hero";
 export default function Landing() {
     return (
         <Page externa>
-            <Header/>
-            <Hero/>
-            <Footer/>
+            <Header />
+            <Hero />
+            <Footer />
         </Page>
     )
 }
